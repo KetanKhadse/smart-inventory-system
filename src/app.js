@@ -1,6 +1,7 @@
 
 
 const express = require('express');
+const productRoutes = require('./routes/productrouts')
 
 const app = express();
 
@@ -9,6 +10,12 @@ app.use(express.json());
 app.get('/',(req,res)=>res.send('hello from express js this is testing'))
 
 app.get('/port',(req,res)=>res.send(`✅ Server is running on port 5000`))
+
+
+// Mount product routes
+app.use('/api/products', productRoutes); 
+
+/*
 app.get('/product/id',(req,res)=>{
     const productId = req.params.id;
     res.send(`🟢 You requested product with ID: ${productId}`)
@@ -25,5 +32,5 @@ res.status(201).json(
         product:{name,quantity}
     });
 });
-
+*/
 module.exports = app;
